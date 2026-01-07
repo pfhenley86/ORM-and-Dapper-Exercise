@@ -11,13 +11,14 @@ var config = new ConfigurationBuilder()
 string connString = config.GetConnectionString("DefaultConnection");
 IDbConnection conn = new MySqlConnection(connString);
 
-var departmentRepo = new DepartmentRepository(conn);
+var repo = new ProductRepository(conn);
+var products = repo.GetAllProducts();
 
-//departmentRepo.InsertDepartment("CSharp-65");
+//repo.CreateProduct("newstuff", 20, 1);
 
-var departments = departmentRepo.GetALLDepartments();
+repo.DeleteProduct(942);
 
-foreach (var dep in departments)
+foreach (var prod in products)
 {
-    Console.WriteLine($"Name: {dep.Name} | ID: {dep.DepartmentID}");
+    Console.WriteLine($"Product ID: {prod.ProductID}, Name: {prod.Name}, Price: {prod.Price}");
 }
