@@ -16,7 +16,9 @@ var products = repo.GetAllProducts();
 
 //repo.CreateProduct("newstuff", 20, 1);
 
-repo.DeleteProduct(942);
+//repo.UpdateProduct(940,"oldstuff");
+
+//repo.DeleteProduct(942);
 
 foreach (var prod in products)
 {

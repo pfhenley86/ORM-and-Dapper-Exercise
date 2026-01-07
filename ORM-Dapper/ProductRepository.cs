@@ -17,9 +17,9 @@ public class ProductRepository : IProductRepository
     }
     
     //Bonus
-    public void UpdateProduct(int productId, string updateName)
+    public void UpdateProduct(int productID, string updateName)
     {
-        _conn.Execute("UPDATE products SET Name = @updateName WHERE ProductID = @productID;", new {productId, updateName});
+        _conn.Execute("UPDATE products SET Name = @updateName WHERE ProductID = @productID;", new {productID, updateName});
     }
 
     //Double Bonus
