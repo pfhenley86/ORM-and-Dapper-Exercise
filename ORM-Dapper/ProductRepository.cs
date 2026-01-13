@@ -11,15 +11,15 @@ public class ProductRepository : IProductRepository
     {
         _conn = conn;
     }
-    public void CreateProduct(string name, double price, int categoryID)
+    public void CreateProduct(string name, double price, int categoryId)
     {
-        _conn.Execute("INSERT INTO products (Name, Price, CategoryID) VALUES (@name, @price, @categoryID);", new {name, price, categoryID});
+        _conn.Execute("INSERT INTO products (Name, Price, CategoryID) VALUES (@name, @price, @categoryID);", new {name, price, categoryId});
     }
     
     //Bonus
-    public void UpdateProduct(int productID, string updateName)
+    public void UpdateProduct(int productId, string updateName)
     {
-        _conn.Execute("UPDATE products SET Name = @updateName WHERE ProductID = @productID;", new {productID, updateName});
+        _conn.Execute("UPDATE products SET Name = @updateName WHERE ProductID = @productID;", new {productId, updateName});
     }
 
     //Double Bonus

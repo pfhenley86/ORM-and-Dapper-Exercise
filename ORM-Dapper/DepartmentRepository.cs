@@ -12,12 +12,12 @@ public class DepartmentRepository : IDepartmentRepository
         _conn = conn;
     }
 
-    public IEnumerable<Department> GetALLDepartments()
+    public IEnumerable<Department> GetAllDepartments()
     {
         return _conn.Query<Department>("SELECT * FROM departments");
     }
     
-    public void InsertDepartment(string name)
+    public void CreateDepartment(string name)
     {
         _conn.Execute("INSERT INTO departments (name) VALUES (@name);", new {name = name});
     }

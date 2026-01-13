@@ -2,5 +2,11 @@ namespace ORM_Dapper;
 
 public interface IDepartmentRepository
 {
-    public IEnumerable<Department> GetALLDepartments();
+    IEnumerable<Department> GetAllDepartments();
+    
+    void CreateDepartment(string name);
+    
+    void UpdateDepartment(int departmentId, string updateName);
+    
+    void DeleteDepartment(int departmentId);
 }

@@ -8,30 +8,30 @@ var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
-string connString = config.GetConnectionString("DefaultConnection");
+string? connString = config.GetConnectionString("DefaultConnection");
 IDbConnection conn = new MySqlConnection(connString);
 
-var productRepo = new ProductRepository(conn);
-var departmentRepo = new DepartmentRepository(conn);
+IProductRepository productRepo = new ProductRepository(conn);
+IDepartmentRepository departmentRepo = new DepartmentRepository(conn);
 var products = productRepo.GetAllProducts();
-var departments = departmentRepo.GetALLDepartments();
+var departments = departmentRepo.GetAllDepartments();
 
-//productRepo.CreateProduct("newstuff", 20, 1);
+//productRepo.CreateProduct("coolnewstuff", 32, 3);
 
-//productRepo.UpdateProduct(940,"oldstuff");
+//productRepo.UpdateProduct(943,"superoldstuff");
 
-//productRepo.DeleteProduct(942);
+//productRepo.DeleteProduct(943);
 
 foreach (var prod in products)
 {
     Console.WriteLine($"Product ID: {prod.ProductID}, Name: {prod.Name}, Price: {prod.Price}");
 }
 
-//departmentRepo.InsertDepartment("golf");
+//departmentRepo.CreateDepartment("golf");
 
-//departmentRepo.UpdateDepartment(8,"pets");
+//departmentRepo.UpdateDepartment(9,"meats");
 
-departmentRepo.DeleteDepartment(8);
+//departmentRepo.DeleteDepartment(9);
 
 foreach(var dep in departments){
     Console.WriteLine($"Department ID: {dep.DepartmentID}, Name: {dep.Name}");
