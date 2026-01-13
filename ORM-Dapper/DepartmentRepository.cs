@@ -21,4 +21,15 @@ public class DepartmentRepository : IDepartmentRepository
     {
         _conn.Execute("INSERT INTO departments (name) VALUES (@name);", new {name = name});
     }
+    
+    //Bonus
+    public void UpdateDepartment(int departmentId, string updateName)
+    {
+        _conn.Execute("UPDATE departments SET Name = @updateName WHERE DepartmentID = @DepartmentID;", new { departmentID = departmentId, updateName});
+    }
+    
+    public void DeleteDepartment(int departmentId)
+    {
+        _conn.Execute("DELETE FROM departments WHERE DepartmentID = @departmentID;", new {departmentId});
+    }
 }

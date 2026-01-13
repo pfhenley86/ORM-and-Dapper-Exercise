@@ -11,16 +11,28 @@ var config = new ConfigurationBuilder()
 string connString = config.GetConnectionString("DefaultConnection");
 IDbConnection conn = new MySqlConnection(connString);
 
-var repo = new ProductRepository(conn);
-var products = repo.GetAllProducts();
+var productRepo = new ProductRepository(conn);
+var departmentRepo = new DepartmentRepository(conn);
+var products = productRepo.GetAllProducts();
+var departments = departmentRepo.GetALLDepartments();
 
-//repo.CreateProduct("newstuff", 20, 1);
+//productRepo.CreateProduct("newstuff", 20, 1);
 
-//repo.UpdateProduct(940,"oldstuff");
+//productRepo.UpdateProduct(940,"oldstuff");
 
-//repo.DeleteProduct(942);
+//productRepo.DeleteProduct(942);
 
 foreach (var prod in products)
 {
     Console.WriteLine($"Product ID: {prod.ProductID}, Name: {prod.Name}, Price: {prod.Price}");
+}
+
+//departmentRepo.InsertDepartment("golf");
+
+//departmentRepo.UpdateDepartment(8,"pets");
+
+departmentRepo.DeleteDepartment(8);
+
+foreach(var dep in departments){
+    Console.WriteLine($"Department ID: {dep.DepartmentID}, Name: {dep.Name}");
 }
